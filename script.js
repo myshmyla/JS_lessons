@@ -36,7 +36,7 @@ console.log(amount2);
 
 // 5. Вычислить бюджет на месяц, учитывая обязательные расходы, сохранить в новую переменную budgetMonth и вывести результат в консоль
 
-let budgetMonth = amount1 - amount2;
+let budgetMonth = money - (amount1 + amount2);
 console.log(budgetMonth);
 
 // 6. Зная budgetMonth, посчитать за сколько месяцев будет достигнута цель mission, вывести в консоль, округляя в большую сторону (Math.ceil)
