@@ -1,34 +1,23 @@
-// Первое задание
-//Следующим переменным присвоить значения
-const money = 500000;
-const income = 'freelance';
-const addExpenses = 'Internet, Taxi, Communal services';
-const deposit = true;
-const mission = 9999999999999;
-const period = 10;
+'use strict';
 
-// Второе задание
-//Вывести в консоль тип данных значений переменных money, income, deposit
-console.log(typeof money);
-console.log(typeof income);
-console.log(typeof deposit);
+// Первый вариант
+const multipleOfNumbers = (num) =>
+  num
+    .toString()
+    .split('')
+    .reduce((res, item) => item * res, 1);
+console.log(multipleOfNumbers(266219));
+console.log(multipleOfNumbers(266219) ** 3);
 
-//Вывести в консоль длину строки addExpenses
-console.log(addExpenses.length);
+// Второй вариант
+let num1 = [2, 6, 6, 2, 1, 9];
+let result = num1.reduce(function (multiply, item, index, array) {
+  return multiply * item;
+}, 1);
 
-//Вывести в консоль “Период равен (period) месяцев” и “Цель заработать (mission) рублей/долларов/гривен/юани”
+console.log(result);
+console.log(result ** 3);
+console.log(String(result).slice(0, 2));
 
-console.log('Период равен: ' + period + ' месяцев');
-console.log('Цель заработать: ' + mission + ' рублей');
-
-//Привести строку addExpenses к нижнему регистру и разбить строку на массив, вывести массив в консоль
-console.log(addExpenses.length);
-console.log(addExpenses.toLowerCase().split(', '));
-
-//Объявить переменную budgetDay и присвоить дневной бюджет (доход за месяц / 30)
-let budgetMonth = 135000;
-let month = 30;
-let budgetDay = budgetMonth / month;
-
-//Вывести в консоль budgetDay
-console.log(budgetDay);
+let result1 = result ** 3;
+console.log(String(result1).slice(0, 2));
