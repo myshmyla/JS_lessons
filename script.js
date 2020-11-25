@@ -1,6 +1,6 @@
 'use strict';
 
-/*// 1. Спрашиваем у пользователя “Ваш месячный доход?” и результат сохраняем в переменную money
+// 1. Спрашиваем у пользователя “Ваш месячный доход?” и результат сохраняем в переменную money
 
 let money = prompt('Ваш месячный доход?');
 console.log(money);
@@ -17,7 +17,7 @@ console.log(addExpenses);
 let deposit = confirm('Есть ли у вас депозит в банке?');
 console.log(deposit);
 
-/*/ 4. Спросить у пользователя по 2 раза каждый вопрос и записать ответы в разные переменные 
+/* 4. Спросить у пользователя по 2 раза каждый вопрос и записать ответы в разные переменные 
 “Введите обязательную статью расходов?” (например expenses1, expenses2)
 “Во сколько это обойдется?” (например amount1, amount2)
 В итоге 4 вопроса и 4 разные переменных */
@@ -36,16 +36,16 @@ console.log(amount2);
 
 // 5. Вычислить бюджет на месяц, учитывая обязательные расходы, сохранить в новую переменную budgetMonth и вывести результат в консоль
 
-let monthlyIncome = 32683;
+let monthlyIncome = 68974;
 let expensesForTheMonth = 12359;
 let budgetMonth = monthlyIncome - expensesForTheMonth;
 console.log(budgetMonth);
 
 // 6. Зная budgetMonth, посчитать за сколько месяцев будет достигнута цель mission, вывести в консоль, округляя в большую сторону (Math.ceil)
 
-//let mission = 999999;
-//let numberOfMonths = mission / budgetMonth;
-//console.log(Math.ceil(numberOfMonths));
+let mission = 999999;
+let numberOfMonths = mission / budgetMonth;
+console.log(Math.ceil(numberOfMonths));
 
 // 7. Поправить budgetDay учитывая бюджет на месяц, а не месячный доход. Вывести в консоль  округлив в меньшую сторону (Math.floor)*/
 
@@ -59,16 +59,10 @@ console.log(Math.floor(budgetDay));
 Если отрицательное значение то вывести “Что то пошло не так”
 Учесть варианты 0, 600 и 1200 (к какому уровню не важно) */
 
-    if (budgetDay > 1200) {
-      console.log('У вас высокий уровень дохода');
-    } else if (budgetDay < 600) {
-      console.log('У вас средний уровень дохода');
-    } else if (budgetDay < 0) {
-      console.log('К сожалению у вас уровень дохода ниже среднего');
-    }
-    break;
-  default:
-    console.log('Что то пошло не так');
+if (budgetDay > 1200) {
+  console.log('У вас высокий уровень дохода');
+} else if (budgetDay > 600 && budgetDay < 1200) {
+  console.log('У вас средний уровень дохода');
+} else if (budgetDay < 600 && budgetDay > 0) {
+  console.log('К сожалению у вас уровень дохода ниже среднего');
 }
-
-
