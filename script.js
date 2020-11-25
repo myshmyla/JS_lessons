@@ -36,14 +36,12 @@ console.log(amount2);
 
 // 5. Вычислить бюджет на месяц, учитывая обязательные расходы, сохранить в новую переменную budgetMonth и вывести результат в консоль
 
-let monthlyIncome = 68974;
-let expensesForTheMonth = 12359;
-let budgetMonth = monthlyIncome - expensesForTheMonth;
+let budgetMonth = amount1 - amount2;
 console.log(budgetMonth);
 
 // 6. Зная budgetMonth, посчитать за сколько месяцев будет достигнута цель mission, вывести в консоль, округляя в большую сторону (Math.ceil)
 
-let mission = 999999;
+const mission = 999999;
 let numberOfMonths = mission / budgetMonth;
 console.log(Math.ceil(numberOfMonths));
 
