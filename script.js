@@ -1,23 +1,74 @@
 'use strict';
 
-// Первый вариант
-const multipleOfNumbers = (num) =>
-  num
-    .toString()
-    .split('')
-    .reduce((res, item) => item * res, 1);
-console.log(multipleOfNumbers(266219));
-console.log(multipleOfNumbers(266219) ** 3);
+/*// 1. Спрашиваем у пользователя “Ваш месячный доход?” и результат сохраняем в переменную money
 
-// Второй вариант
-let num1 = [2, 6, 6, 2, 1, 9];
-let result = num1.reduce(function (multiply, item, index, array) {
-  return multiply * item;
-}, 1);
+let money = prompt('Ваш месячный доход?');
+console.log(money);
 
-console.log(result);
-console.log(result ** 3);
-console.log(String(result).slice(0, 2));
+// 2. Спросить у пользователя “Перечислите возможные расходы за рассчитываемый период через запятую” сохранить в переменную addExpenses (пример: "Квартплата, проездной, кредит")
 
-let result1 = result ** 3;
-console.log(String(result1).slice(0, 2));
+let addExpenses = prompt(
+  'Перечислите возможные расходы за рассчитываемый период через запятую'
+);
+console.log(addExpenses);
+
+// 3. Спросить у пользователя “Есть ли у вас депозит в банке?” и сохранить данные в переменной deposit (булево значение true/false)
+
+let deposit = confirm('Есть ли у вас депозит в банке?');
+console.log(deposit);
+
+/*/ 4. Спросить у пользователя по 2 раза каждый вопрос и записать ответы в разные переменные 
+“Введите обязательную статью расходов?” (например expenses1, expenses2)
+“Во сколько это обойдется?” (например amount1, amount2)
+В итоге 4 вопроса и 4 разные переменных */
+
+let expenses1 = prompt('Введите обязательную статью расходов?', 'Оплата труда');
+console.log(expenses1);
+
+let amount1 = prompt('Во сколько это обойдется?', '500000');
+console.log(amount1);
+
+let expenses2 = prompt('Введите обязательную статью расходов?', 'Налоги');
+console.log(expenses2);
+
+let amount2 = prompt('Во сколько это обойдется?', '50000');
+console.log(amount2);
+
+// 5. Вычислить бюджет на месяц, учитывая обязательные расходы, сохранить в новую переменную budgetMonth и вывести результат в консоль
+
+let monthlyIncome = 32683;
+let expensesForTheMonth = 12359;
+let budgetMonth = monthlyIncome - expensesForTheMonth;
+console.log(budgetMonth);
+
+// 6. Зная budgetMonth, посчитать за сколько месяцев будет достигнута цель mission, вывести в консоль, округляя в большую сторону (Math.ceil)
+
+//let mission = 999999;
+//let numberOfMonths = mission / budgetMonth;
+//console.log(Math.ceil(numberOfMonths));
+
+// 7. Поправить budgetDay учитывая бюджет на месяц, а не месячный доход. Вывести в консоль  округлив в меньшую сторону (Math.floor)*/
+
+let budgetDay = budgetMonth / 30;
+console.log(Math.floor(budgetDay));
+
+/* 8. Написать конструкцию условий (расчеты приведены в рублях)	
+Если budgetDay больше 1200, то “У вас высокий уровень дохода”
+Если budgetDay больше 600 и меньше 1200, то сообщение “У вас средний уровень дохода”
+Если budgetDay меньше 600 и больше 0 то в консоль вывести сообщение “К сожалению у вас уровень дохода ниже среднего”
+Если отрицательное значение то вывести “Что то пошло не так”
+Учесть варианты 0, 600 и 1200 (к какому уровню не важно) */
+
+    if (budgetDay > 1200) {
+      console.log('У вас высокий уровень дохода');
+    } else if (budgetDay < 600) {
+      console.log('У вас средний уровень дохода');
+    } else if (budgetDay < 0) {
+      console.log('К сожалению у вас уровень дохода ниже среднего');
+    }
+    break;
+  default:
+    console.log('Что то пошло не так');
+}
+
+
