@@ -1,35 +1,61 @@
 'use strict';
+let isNumber = function(n){
+  return !isNaN(parseFloat(n)) && isFinite(n)
+}
 
-let money = +prompt('Ваш месячный доход?');
-console.log(money);
+let money,
+  income = 'Фриланс',
+  addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую'),
+  deposit = confirm('Есть ли у вас депозит в банке?'),
+  mission = 50000;
+ // period = 3;
 
-let addExpenses = prompt(
-  'Перечислите возможные расходы за рассчитываемый период через запятую'
-);
-console.log(addExpenses);
+let start = function() {
+  do{
+    money = prompt('Ваш месячный доход?');
+  }
+  while (isNaN(money) || money === '' || money === null)
+};
 
-let deposit = confirm('Есть ли у вас депозит в банке?');
-console.log(deposit);
+start();
 
-let expenses1 = prompt('Введите обязательную статью расходов?'),
-  expenses1Amount = +prompt('Во сколько это обойдется?'),
-  expenses2 = prompt('Введите обязательную статью расходов?'),
-  expenses2Amount = +prompt('Во сколько это обойдется?');
+let showTypeOf = function (item) {
+  console.log(typeof item);
+};
+showTypeOf(money);
+showTypeOf(income);
+showTypeOf(deposit);
+
+
+let expenses = [];
 
 console.log(addExpenses.toLowerCase().split(','));
 
 let getExpensesMonth = function () {
-  return expenses1Amount + expenses2Amount;
+let sum = 0;
+
+for (let i = 0; i< 2; i ++) {
+  
+expenses[i] = prompt('Введите обязательную статью расходов?');
+
+  sum+= +prompt('Во сколько это обойдется?');
+}
+console.log(expenses);
+  return sum;
 };
-console.log('Расходы за месяц: ' + getExpensesMonth());
+
+
+let expensesAmount = getExpensesMonth();
+
+console.log('Расходы за месяц: ' + expensesAmount);
 
 let getAccumulatedMonth = function () {
-  return money - getExpensesMonth();
+  return money - expensesAmount;
 };
 
 let accumulatedMonth = getAccumulatedMonth();
 
-let mission = 999999;
+
 let getTargetMonth = function () {
   return mission / accumulatedMonth;
 };
@@ -58,9 +84,14 @@ let getStatusIncome = function () {
 
 console.log(getStatusIncome());
 
-/*let showTypeOf = function () {
-  return;
-};
-showTypeOf(money);
-showTypeOf(deposit);
-showTypeOf(getExpensesMonth);*/
+
+/*let money = +prompt('Ваш месячный доход?');
+console.log(money);
+
+let addExpenses = prompt(
+  'Перечислите возможные расходы за рассчитываемый период через запятую'
+);
+console.log(addExpenses);
+
+let deposit = confirm('Есть ли у вас депозит в банке?');
+console.log(deposit);*/
