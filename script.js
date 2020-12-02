@@ -1,7 +1,7 @@
 'use strict';
-//let isNumber = function (n) {
-// return !isNaN(parseFloat(n)) && isFinite(n);
-//};
+let isNumber = function (n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+};
 
 let money,
   start = function () {
@@ -32,15 +32,16 @@ let expenses = [];
 console.log(addExpenses.toLowerCase().split(','));
 
 let getExpensesMonth = function () {
-  let sum = 0;
+  let sum = 0,
+    question;
 
   for (let i = 0; i < 2; i++) {
     expenses[i] = prompt('Введите обязательную статью расходов?');
     do {
-      sum += +prompt('Во сколько это обойдется?'); // Здесь добавил 2 плюса;
-    } while (isNaN(sum) || sum === '' || sum === null);
+      question = prompt('Во сколько это обойдется?');
+    } while (isNaN(question) || question.trim() === '' || question === null);
+    sum += +question;
   }
-  console.log(expenses);
   return sum;
 };
 
@@ -55,7 +56,7 @@ let getAccumulatedMonth = function () {
 let accumulatedMonth = getAccumulatedMonth();
 
 let getTargetMonth = function () {
-  return mission / accumulatedMonth;
+  return mission / getAccumulatedMonth(); //accumulatedMonth;
 };
 
 let budgetDay = accumulatedMonth / 30;
