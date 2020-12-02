@@ -1,23 +1,24 @@
 'use strict';
-let isNumber = function(n){
-  return !isNaN(parseFloat(n)) && isFinite(n)
-}
+//let isNumber = function (n) {
+// return !isNaN(parseFloat(n)) && isFinite(n);
+//};
 
 let money,
-  income = 'Фриланс',
-  addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую'),
-  deposit = confirm('Есть ли у вас депозит в банке?'),
-  mission = 50000;
- // period = 3;
-
-let start = function() {
-  do{
-    money = prompt('Ваш месячный доход?');
-  }
-  while (isNaN(money) || money === '' || money === null)
-};
+  start = function () {
+    do {
+      money = prompt('Ваш месячный доход?');
+    } while (isNaN(parseFloat(money)));
+  };
 
 start();
+
+let income = 'Фриланс',
+  addExpenses = prompt(
+    'Перечислите возможные расходы за рассчитываемый период через запятую'
+  ),
+  deposit = confirm('Есть ли у вас депозит в банке?'),
+  mission = 50000,
+  period = 3;
 
 let showTypeOf = function (item) {
   console.log(typeof item);
@@ -26,24 +27,22 @@ showTypeOf(money);
 showTypeOf(income);
 showTypeOf(deposit);
 
-
 let expenses = [];
 
 console.log(addExpenses.toLowerCase().split(','));
 
 let getExpensesMonth = function () {
-let sum = 0;
+  let sum = 0;
 
-for (let i = 0; i< 2; i ++) {
-  
-expenses[i] = prompt('Введите обязательную статью расходов?');
-
-  sum+= +prompt('Во сколько это обойдется?');
-}
-console.log(expenses);
+  for (let i = 0; i < 2; i++) {
+    expenses[i] = prompt('Введите обязательную статью расходов?');
+    do {
+      sum = prompt('Во сколько это обойдется?');
+    } while (isNaN(sum) || sum === '' || sum === null);
+  }
+  console.log(expenses);
   return sum;
 };
-
 
 let expensesAmount = getExpensesMonth();
 
@@ -54,7 +53,6 @@ let getAccumulatedMonth = function () {
 };
 
 let accumulatedMonth = getAccumulatedMonth();
-
 
 let getTargetMonth = function () {
   return mission / accumulatedMonth;
@@ -83,15 +81,3 @@ let getStatusIncome = function () {
 };
 
 console.log(getStatusIncome());
-
-
-/*let money = +prompt('Ваш месячный доход?');
-console.log(money);
-
-let addExpenses = prompt(
-  'Перечислите возможные расходы за рассчитываемый период через запятую'
-);
-console.log(addExpenses);
-
-let deposit = confirm('Есть ли у вас депозит в банке?');
-console.log(deposit);*/
