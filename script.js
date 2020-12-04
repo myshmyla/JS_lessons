@@ -17,7 +17,7 @@ let income = 'Фриланс',
     'Перечислите возможные расходы за рассчитываемый период через запятую'
   ),
   deposit = confirm('Есть ли у вас депозит в банке?'),
-  mission = 50000,
+  mission = 500000,
   period = 3;
 
 let showTypeOf = function (item) {
@@ -39,7 +39,7 @@ let getExpensesMonth = function () {
     expenses[i] = prompt('Введите обязательную статью расходов?');
     do {
       question = prompt('Во сколько это обойдется?');
-    } while (isNaN(question) || question.trim() === '' || question === null);
+    } while (isNaN(question) || question === '' || question === null);
     sum += +question;
   }
   return sum;
@@ -63,7 +63,7 @@ let budgetDay = accumulatedMonth / 30;
 
 if (getTargetMonth() > 0) {
   console.log(
-    'Цель будет достигнута за ' + Math.ceil(getTargetMonth()) + ' месяц'
+    'Цель будет достигнута за ' + Math.ceil(getTargetMonth()) + ' месяца'
   );
 } else {
   console.log('Цель не будет достигнута');
