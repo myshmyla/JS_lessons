@@ -13,6 +13,43 @@ let money,
 start();
 
 let appData = {
+  income: {},
+  addIncome: [],
+  expenses: {},
+  addExpenses: [],
+  deposit: false,
+  mission: 50000,
+  period: 3,
+  asking: function () {
+    let addExpenses = prompt(
+      'Перечислите возможные расходы за рассчитываемый период через запятую'
+    );
+    appData.addExpenses = addExpenses.toLowerCase().split(',');
+    appData.deposit = confirm('Есть ли у вас депозит в банке?');
+    for (let i = 0; i < 2; i++) {
+      appData.expenses[i] = prompt('Введите обязательную статью расходов?');
+      do {
+        question = prompt('Во сколько это обойдется?');
+      } while (isNaN(question) || question === '' || question === null);
+      sum += +question;
+    }
+  },
+  budget: money,
+  budgetDay: 0,
+  budgetMonth: 0,
+  expensesMonth: 0,
+  getExpensesMonth: function () {
+    let sum = 0,
+      question;
+
+    return sum;
+  },
+  getAccumulatedMonth: function () {
+    return money - expensesAmount;
+  },
+  getTargetMonth: function () {
+    return appData.mission / appData.getAccumulatedMonth(); //accumulatedMonth;
+  },
   getStatusIncome: function () {
     if (budgetDay > 1200) {
       return 'У вас высокий уровень дохода';
@@ -24,49 +61,11 @@ let appData = {
       return 'Что то пошло не так!';
     }
   },
-  getTargetMonth: function () {
-    return appData.mission / appData.getAccumulatedMonth();
-  },
-  getAccumulatedMonth: function () {
-    return money - expensesAmount;
-  },
-  getExpensesMonth: function () {},
-  budget: money,
-  budgetDay: 0,
-  budgetMonth: 0,
-  expensesMonth: 0,
-  income: {}, // доп доходы, объект
-  addIncome: [], // доп доходы массив
-  expenses: {}, // доп расходы
-  addExpenses: [], // массив с возможными расходами
-  deposit: false, // депозит
-  mission: 78000, // миссия
-  period: 3, // период
-  asking: function () {
-    let sum = 0,
-      question;
-
-    for (let i = 0; i < 2; i++) {
-      appData.expenses[i] = prompt('Введите обязательную статью расходов?');
-      do {
-        question = prompt('Во сколько это обойдется?');
-      } while (isNaN(question) || question.trim() === '' || question === null);
-      sum += +question;
-    }
-    return sum;
-
-    let addExpenses = prompt(
-      'Перечислите возможные расходы за рассчитываемый период через запятую'
-    );
-    appData.addExpenses = addExpenses.toLowerCase().split(',');
-    appData.deposit = confirm('Есть ли у вас депозит в банке?');
-  },
 };
-
 appData.asking();
-//  showTypeOf(money);
-//  showTypeOf(appData.income);
-//  showTypeOf(appData.deposit);
+//showTypeOf(appData.money);
+//showTypeOf(appData.income);
+//showTypeOf(appData.deposit);
 
 let expenses = [];
 
