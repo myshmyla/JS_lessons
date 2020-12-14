@@ -30,12 +30,13 @@ let appData = {
     let a1,
       a2 = 0;
     for (let i = 0; i < 2; i++) {
-      appData.expenses[a1] = +a2;
       a1 = prompt('Введите обязательную статью расходов?');
       do {
         a2 = +prompt('Во сколько это обойдется?');
       } while (isNaN(a2) || a2 === '' || a2 === null);
+      appData.expenses[a1] = +a2;
     }
+    console.log(appData.expenses);
   },
   budget: money,
   budgetDay: 0,
