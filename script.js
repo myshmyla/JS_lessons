@@ -26,13 +26,14 @@ let appData = {
     );
     appData.addExpenses = addExpenses.toLowerCase().split(',');
     appData.deposit = confirm('Есть ли у вас депозит в банке?');
+
     for (let i = 0; i < 2; i++) {
-      appData.expenses[i] = prompt('Введите обязательную статью расходов?');
+      a1 = prompt('Введите обязательную статью расходов?');
       do {
-        question = prompt('Во сколько это обойдется?');
-      } while (isNaN(question) || question === '' || question === null);
-      sum += +question;
+        a2 = +prompt('Во сколько это обойдется?');
+      } while (isNaN(a2) || a2 === '' || a2 === null);
     }
+    appData.expenses[a1] = +a2;
   },
   budget: money,
   budgetDay: 0,
