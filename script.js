@@ -20,6 +20,10 @@ let appData = {
   deposit: false,
   mission: 50000,
   period: 3,
+  budget: money,
+  budgetDay: 0,
+  budgetMonth: 0,
+  expensesMonth: 0,
   asking: function () {
     let addExpenses = prompt(
       'Перечислите возможные расходы за рассчитываемый период через запятую'
@@ -38,10 +42,7 @@ let appData = {
     }
     console.log(appData.expenses);
   },
-  budget: money,
-  budgetDay: 0,
-  budgetMonth: 0,
-  expensesMonth: 0,
+
   getExpensesMonth: function () {
     for (let item in appData.expenses) {
       appData.expensesMonth += appData.expenses[item];
@@ -49,17 +50,17 @@ let appData = {
     return appData.expensesMonth;
   },
   getBudget: function () {
-    return money - expensesAmount;
+    appData.budgetMonth = appData.budget - appData.expensesMonth;
   },
   getTargetMonth: function () {
-    return appData.mission / appData.getBudget();
+    appData.mission / appData.budgetMonth;
   },
   getStatusIncome: function () {
-    if (budgetDay > 1200) {
+    if (appData.budgetDay > 1200) {
       return 'У вас высокий уровень дохода';
-    } else if (budgetDay > 600 && budgetDay < 1200) {
+    } else if (appData.budgetDay > 600 && appData.budgetDay < 1200) {
       return 'У вас средний уровень дохода';
-    } else if (budgetDay < 600 && budgetDay > 0) {
+    } else if (appData.budgetDay < 600 && appData.budgetDay > 0) {
       return 'К сожалению у вас уровень дохода ниже среднего';
     } else {
       return 'Что то пошло не так!';
@@ -67,9 +68,9 @@ let appData = {
   },
 };
 appData.asking();
-// showTypeOf(appData.money);
-// showTypeOf(appData.income);
-// showTypeOf(appData.deposit);
+showTypeOf(appData.addExpenses);
+showTypeOf(appData.getTargetMonth);
+showTypeOf(appData.getStatusIncome);
 
 let expenses = [];
 
