@@ -42,12 +42,17 @@ let appData = {
   budgetDay: 0,
   budgetMonth: 0,
   expensesMonth: 0,
-  getExpensesMonth: function () {},
-  getAccumulatedMonth: function () {
+  getExpensesMonth: function () {
+    for (let item in appData.expenses) {
+      appData.expensesMonth += appData.expenses[item];
+    }
+    return appData.expensesMonth;
+  },
+  getBudget: function () {
     return money - expensesAmount;
   },
   getTargetMonth: function () {
-    return appData.mission / appData.getAccumulatedMonth(); //accumulatedMonth;
+    return appData.mission / appData.getBudget();
   },
   getStatusIncome: function () {
     if (budgetDay > 1200) {
@@ -72,7 +77,7 @@ let expensesAmount = appData.getExpensesMonth();
 
 console.log('Расходы за месяц: ' + expensesAmount);
 
-let accumulatedMonth = appData.getAccumulatedMonth();
+let accumulatedMonth = appData.getBudget();
 
 let budgetDay = accumulatedMonth / 30;
 
