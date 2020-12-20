@@ -28,8 +28,11 @@ let appData = {
   expensesMonth: 0,
   asking: function () {
     if (confirm('Есть ли у вас дополнительный источник заработка?')) {
-      let itemIncome = promt('Какой у вас дополнительный заработок?', 'Таксую');
-      let cashIncome = promt(
+      let itemIncome = prompt(
+        'Какой у вас дополнительный заработок?',
+        'Таксую'
+      );
+      let cashIncome = prompt(
         'Сколько в месяц вы на этом зарабатываете?',
         10000
       );
