@@ -28,67 +28,49 @@ let appData = {
   expensesMonth: 0,
   asking: function () {
         if (confirm('Есть ли у вас дополнительный источник заработка?')) {
-          let itemIncome = prompt(
-        'Какой у вас дополнительный заработок?',
+          let cashIncome, itemIncome;
+
+          do {
+              itemIncome = prompt('Какой у вас дополнительный заработок?',
         'Таксую');
-        let cashIncome = prompt(
-        'Сколько в месяц вы на этом зарабатываете?',
-        10000
-      );
+          } while (isNumber(itemIncome) || itemIncome === null);
+          
+          while(!isNumber(cashIncome))
+          {
+            cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?',
+        10000);
+          };
+
       appData.income[itemIncome] = cashIncome;
     }
-    let addExpenses = prompt(
+    
+    let addExpenses;
+    do {
+      addExpenses = prompt(
       'Перечислите возможные расходы за рассчитываемый период через запятую'
     );
+    } while (isNumber(addExpenses) || addExpenses === null);
+    
     appData.addExpenses = addExpenses.toUpperCase().split(', ');
     appData.deposit = confirm('Есть ли у вас депозит в банке?');
     let expensesItem;
     let amount;
     for (let i = 0; i < 2; i++) {
       do {
-       let moneyDeposit = prompt('Какая сумма заложена?', 10000);
-      if (moneyDeposit.trim() === '' || !isNumber(moneyDeposit)) {
-        alert('Было введено не число, попробуйте еще раз');
-      }
-      } while (!isNumber(moneyDeposit));
-      
-      
-      
-      do { 
-        itemIncome = prompt(
-        'Какой у вас дополнительный заработок?',
-        'Таксую');
-      } while (isNumber(itemIncome) || itemIncome === null);
+       expensesItem = prompt('Введите обязательную статью расходов');
+       } while (isNumber(expensesItem) || expensesItem === null);
 
-     do {
-       cashIncome = prompt(
-        'Сколько в месяц вы на этом зарабатываете?',
-        10000);
-      if (cashIncome.trim() === '' || !isNumber(cashIncome)) {
-          alert('Было введено не число, попробуйте еще раз');
-        }
-      } while (!isNumber(cashIncome));
-          
-      do {
-        expensesItem = prompt('Введите обязательную статью расходов?');
-      } while (isNumber(expensesItem) || expensesItem === null);
-      
-      do {
-        amount = prompt('Во сколько это обойдется?', '');
-        if (amount.trim() === '' || !isNumber(amount)) {
-          alert('Было введено не число, попробуйте еще раз');
-        }
+       do {
+         amount = prompt ('Во сколько это обойдется?', '');
+         if (amount.trim() === '' || !isNumber(amount))
+       {
+         alert ('Было введено не число, попробуйте еще раз')
+       }
       } while (!isNumber(amount));
 
-      do {
-      percentDeposit = prompt('Какой годовой процент?', '10');
-    if (percentDeposit.trim() === '' || !isNumber(percentDeposit)) {
-      alert('Было введено не число, попробуйте еще раз');
-    }
-  } while (!isNumber(percentDeposit)); 
-
       appData.expenses[expensesItem] = +amount;
-    }},
+    }
+  },
   getExpensesMonth: function () {
     let sum = 0;
     for (let key in appData.expenses) {
