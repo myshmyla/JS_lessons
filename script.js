@@ -97,11 +97,28 @@ let appData = {
   getTargetMonth: function () {
     return Math.ceil(appData.mission / appData.budgetMonth);
   },
+
+  //внутри метода getInfoDeposit нужно добавить проверки на цифру, как ранее у тебя были через цикл do while
   getInfoDeposit: function () {
+    
     if (appData.deposit) {
-      appData.percentDeposit = prompt('Какой годовой процент?', '10');
-      appData.moneyDeposit = prompt('Какая сумма заложена?', 10000);
+      do {
+         percentDeposit = prompt('Какой годовой процент?', '10');
+         (percentDeposit.trim() === '' || !isNumber(percentDeposit))
+       {
+         alert ('Было введено не число, попробуйте еще раз')
+       }
+      } while (!isNumber(percentDeposit));
+
+    do {
+         moneyDeposit = prompt('Какая сумма заложена?', 10000);
+         if (moneyDeposit.trim() === '' || !isNumber(moneyDeposit))
+       {
+         alert ('Было введено не число, попробуйте еще раз')
+       }
+      } while (!isNumber(moneyDeposit));
     }
+
   },
   calcInfoDeposit: function () {
     return appData.budgetMonth * appData.period;
@@ -109,11 +126,7 @@ let appData = {
 };
 appData.asking();
 
-console.log(
-  'Сумма всех обязательных расходов за месяц: ',
-  appData.getExpensesMonth()
-);
-
+//вызов метода поправить на вывод поля объекта.
 appData.getBudget();
 appData.getTargetMonth();
 
