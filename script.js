@@ -32,7 +32,7 @@ let appData = {
 
       do {
         itemIncome = prompt('Какой у вас дополнительный заработок?', 'Таксую');
-      } while (isNumber(itemIncome) || itemIncome === null);
+      } while (isNumber(itemIncome) || itemIncome === undefined || itemIncome === null|| itemIncome.trim() === '');
 
       while (!isNumber(cashIncome)) {
         cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?', 10000);
@@ -46,7 +46,7 @@ let appData = {
       addExpenses = prompt(
         'Перечислите возможные расходы за рассчитываемый период через запятую'
       );
-    } while (isNumber(addExpenses) || addExpenses === null);
+    } while (isNumber(addExpenses) || addExpenses === undefined || addExpenses === null || addExpenses.trim() === '');
 
     appData.addExpenses = addExpenses.toUpperCase().split(', ');
     appData.deposit = confirm('Есть ли у вас депозит в банке?');
@@ -55,7 +55,7 @@ let appData = {
     for (let i = 0; i < 2; i++) {
       do {
         expensesItem = prompt('Введите обязательную статью расходов');
-      } while (isNumber(expensesItem) || expensesItem === null);
+      } while (isNumber(expensesItem) || expensesItem === undefined || expensesItem === null || expensesItem.trim() === '');
 
       do {
         amount = prompt('Во сколько это обойдется?', '');
@@ -112,7 +112,7 @@ let appData = {
 };
 appData.asking();
 
-//вызов метода поправить на вывод поля объекта.
+
 appData.getBudget();
 appData.getTargetMonth();
 
