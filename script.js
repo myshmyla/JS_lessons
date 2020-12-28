@@ -1,4 +1,5 @@
-'use strict';
+// 'use strict';
+
 // let isNumber = function (n) {
 //   return !isNaN(parseFloat(n)) && isFinite(n);
 // };
@@ -27,25 +28,35 @@
 //   expensesMonth: 0,
 //   asking: function () {
 //     if (confirm('Есть ли у вас дополнительный источник заработка?')) {
-//       let itemIncome = prompt(
-//         'Какой у вас дополнительный заработок?',
-//         'Таксую'
-//       );
-//       let cashIncome = prompt(
-//         'Сколько в месяц вы на этом зарабатываете?',
-//         10000
-//       );
+//       let cashIncome, itemIncome;
+
+//       do {
+//         itemIncome = prompt('Какой у вас дополнительный заработок?', 'Таксую');
+//       } while (isNumber(itemIncome) || itemIncome === undefined || itemIncome === null|| itemIncome.trim() === '');
+
+//       while (!isNumber(cashIncome)) {
+//         cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?', 10000);
+//       }
+
 //       appData.income[itemIncome] = cashIncome;
 //     }
-//     let addExpenses = prompt(
-//       'Перечислите возможные расходы за рассчитываемый период через запятую'
-//     );
-//     appData.addExpenses = addExpenses.toLowerCase().split(', ');
+
+//     let addExpenses;
+//     do {
+//       addExpenses = prompt(
+//         'Перечислите возможные расходы за рассчитываемый период через запятую'
+//       );
+//     } while (isNumber(addExpenses) || addExpenses === undefined || addExpenses === null || addExpenses.trim() === '');
+
+//     appData.addExpenses = addExpenses.toUpperCase().split(', ');
 //     appData.deposit = confirm('Есть ли у вас депозит в банке?');
 //     let expensesItem;
 //     let amount;
 //     for (let i = 0; i < 2; i++) {
-//       expensesItem = prompt('Введите обязательную статью расходов?');
+//       do {
+//         expensesItem = prompt('Введите обязательную статью расходов');
+//       } while (isNumber(expensesItem) || expensesItem === undefined || expensesItem === null || expensesItem.trim() === '');
+
 //       do {
 //         amount = prompt('Во сколько это обойдется?', '');
 //         if (amount.trim() === '' || !isNumber(amount)) {
@@ -82,10 +93,17 @@
 //   getTargetMonth: function () {
 //     return Math.ceil(appData.mission / appData.budgetMonth);
 //   },
+
+//   //внутри метода getInfoDeposit нужно добавить проверки на цифру, как ранее у тебя были через цикл do while
 //   getInfoDeposit: function () {
 //     if (appData.deposit) {
-//       appData.percentDeposit = prompt('Какой годовой процент?', '10');
-//       appData.moneyDeposit = prompt('Какая сумма заложена?', 10000);
+//       do {
+//         percentDeposit = prompt('Какой годовой процент?', '10');
+//       } while (!isNumber(percentDeposit));
+
+//       do {
+//         moneyDeposit = prompt('Какая сумма заложена?', 10000);
+//       } while (!isNumber(moneyDeposit));
 //     }
 //   },
 //   calcInfoDeposit: function () {
@@ -94,10 +112,6 @@
 // };
 // appData.asking();
 
-// console.log(
-//   'Сумма всех обязательных расходов за месяц: ',
-//   appData.getExpensesMonth()
-// );
 
 // appData.getBudget();
 // appData.getTargetMonth();
@@ -116,9 +130,21 @@
 //   console.log(`Наша программа включает в себя данные: ${i} - ${appData[i]}`);
 // }
 
-console.log(document.getElementById('start'));
-console.log(document.getElementsByTagName('button'));
-console.log(document.querySelector('#deposit-check'));
-console.log(document.querySelectorAll('.additional_income-item'));
-console.log(document.getElementsByClassName('.result-total'));
-console.log(document.querySelector('#deposit-check'));
+const start = document.getElementById('start');
+console.log(start);
+
+const button = document.getElementsByTagName('button');
+console.log(button);
+
+const depositCheck = document.querySelector('#deposit-check');
+console.log(depositCheck);
+
+const additionalIncomeItem = document.querySelectorAll('.additional_income-item');
+console.log(additionalIncomeItem);
+
+const resultTotal = document.getElementsByClassName('.result-total');
+console.log(resultTotal);
+
+const depositChack = document.querySelector('#deposit-check');
+console.log(depositCheck);
+
